@@ -7,7 +7,7 @@ app.use(express.json())
 const port = 4000
 
 // Available Routes
-app.use('/api/create-user', require('./routes/auth.js'))
+app.use('/api/', require('./routes/auth.js'))
 app.use('/api/notes', require('./routes/notes.js'))
 
 app.get('/', (req, res) => {
