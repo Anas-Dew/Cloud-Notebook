@@ -4,7 +4,8 @@ const router = express.Router();
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
-
+const fetchuser = require('../middleware/fetchuser');
+// ROUTE : 3 -> CREATE A NEW USER IN DB.
 router.post('/create-user', [
   // get these values from request body
   body('name', 'Input your name').isLength({ min: 1 }),
@@ -38,11 +39,12 @@ router.post('/create-user', [
       id : user.id
     }
   }
-
+  
   const authToken = jwt.sign(data, 'lewpewmew');
+  return res.status(200).json({authToken})
 })
 
-
+// ROUTE : 2 -> USER LOGIN 
 router.post('/login-user', [
   // get these values from request body
   body('email', 'Email is invalid!').isEmail(),
@@ -67,7 +69,7 @@ router.post('/login-user', [
     }
     const data = {
       user : {
-        id : User.id
+        id : user.id
       }
     }
   
@@ -77,4 +79,17 @@ router.post('/login-user', [
     return res.status(500).json({error: "Internal Server Error"})
   }
 })
+
+// ROUTE : 3 -> FETCH USER DETAILS 
+router.post('/get-user', fetchuser, async(req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Errors!")
+
+  }
+})
+
 module.exports = router
