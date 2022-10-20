@@ -13,11 +13,12 @@ function App() {
 
         <Router>
           <Navbar title='INoteBook' />
-
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/account" element={<Account />} />
-          </Routes>
+          <div className='container'>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/account" element={<Account />} />
+            </Routes>
+          </div>
 
         </Router>
       </NoteState>
