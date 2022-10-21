@@ -5,7 +5,6 @@ import Home from './components/Home';
 import Account from './components/Account';
 import NoteState from './context/NoteState';
 
-
 function App() {
   return (
     <>
