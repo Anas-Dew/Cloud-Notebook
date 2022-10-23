@@ -10,38 +10,38 @@ export default function Navbar(props) {
     
     return (
         <>
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-                <div class="container-fluid">
-                    <Link class="navbar-brand text-light" to="/">{props.title}</Link>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+                <div className="container-fluid">
+                    <Link className="navbar-brand text-light" to="/">{props.title}</Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
                                 <Link className={`nav-link  ${Location.pathname === '/' ? 'active' : ''}`} aria-current="page" to="/">Home</Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link className={`nav-link  ${Location.pathname === '/account' ? 'active' : ''}`} to="/account">Account</Link>
                             </li>
-                            {/* <li class="nav-item dropdown">
-                                <Link class="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {/* <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Dropdown
                                 </Link>
-                                <ul class="dropdown-menu">
-                                    <li><Link class="dropdown-item" to="#">Action</Link></li>
-                                    <li><Link class="dropdown-item" to="#">Another action</Link></li>
-                                    <li><hr class="dropdown-divider"/></li>
-                                    <li><Link class="dropdown-item" to="#">Something else here</Link></li>
+                                <ul className="dropdown-menu">
+                                    <li><Link className="dropdown-item" to="#">Action</Link></li>
+                                    <li><Link className="dropdown-item" to="#">Another action</Link></li>
+                                    <li><hr className="dropdown-divider"/></li>
+                                    <li><Link className="dropdown-item" to="#">Something else here</Link></li>
                                 </ul>
                             </li> */}
-                            <li class="nav-item">
-                                <Link class="nav-link disabled">Premium Features</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link disabled">Premium Features</Link>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                                <button class="btn btn-outline-light" type="submit">Find</button>
+                        <form className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                                <button className="btn btn-outline-light" type="submit">Find</button>
                         </form>
                     </div>
                 </div>
