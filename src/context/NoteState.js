@@ -11,42 +11,6 @@ const NoteState = (props) => {
           "date": "1665557258907",
           "__v": 0
         },
-        {
-          "_id": "6346630b0fbabce61752ad7fe",
-          "user": "6344eac5b01184567d81c939",
-          "title": "Hell yeah",
-          "description": "this is new description",
-          "tags": "work",
-          "date": "1665557259617",
-          "__v": 0
-        },
-        {
-          "_id": "6346630bf0babce61752ad7fe",
-          "user": "6344eac5b01184567d81c939",
-          "title": "Hell yeah",
-          "description": "this is new description",
-          "tags": "work",
-          "date": "1665557259617",
-          "__v": 0
-        },
-        {
-          "_id": "6346630bfbabc0e61752ad7fe",
-          "user": "6344eac5b01184567d81c939",
-          "title": "Hell yeah",
-          "description": "this is new description",
-          "tags": "work",
-          "date": "1665557259617",
-          "__v": 0
-        },
-        {
-          "_id": "6346630bfbabce61752ad07fe",
-          "user": "6344eac5b01184567d81c939",
-          "title": "Hell yeah",
-          "description": "this is new description",
-          "tags": "work",
-          "date": "1665557259617",
-          "__v": 0
-        }
       ]
 
 
@@ -54,7 +18,7 @@ const NoteState = (props) => {
     const addNote = (title, description, tags) => {
       console.log('adding a note');
       const note = {
-        "_id": "6346630bfce61752ad07fe",
+        "_id": "0bfce61752ad07fe",
         "user": "6344eac5b01184567d81c939",
         "title": title,
         "description": description,
@@ -65,12 +29,14 @@ const NoteState = (props) => {
       setnote(notes.concat(note))
     }
     // DELETE A NOTE
-    const deleteNote = () => {
-
+    const deleteNote = (id) => {
+      console.log('delete run');
+      const newNote = notes.filter((note) => {return note._id !== id})
+      setnote(newNote)
     }
     // UPDATE A NOTE
-      const updateNote = () => {
-      }
+    const updateNote = () => {
+    }
     const [note, setnote] = useState(notes)
     return(
         < NoteContext.Provider value={{note, setnote, addNote, deleteNote, updateNote}}>

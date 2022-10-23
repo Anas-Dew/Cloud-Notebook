@@ -4,7 +4,7 @@ import Noteitems from './Noteitems'
 export default function Notes() {
 
     const notes = useContext(noteContext)
-    const { note, addNote } = notes
+    const { note } = notes
 
     return (
         <>
