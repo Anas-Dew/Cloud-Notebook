@@ -1,10 +1,14 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import noteContext from '../context/noteContext'
 import Noteitems from './Noteitems'
 export default function Notes() {
 
     const notes = useContext(noteContext)
-    const { note } = notes
+    const { note, fetchAllNotes } = notes
+    useEffect(() => {
+      fetchAllNotes();
+    }, [])
+    
 
     return (
         <>
