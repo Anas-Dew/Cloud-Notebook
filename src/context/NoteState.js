@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import NoteContext from './noteContext'
 const NoteState = (props) => {
+  const host = 'http://localhost:5000'
   
   const fetchAllNotes = async() => {
     const response = await fetch(`${host}/api/notes/fetch-all-notes`, {
@@ -10,25 +11,13 @@ const NoteState = (props) => {
         'authToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0NGVhYzViMDExODQ1NjdkODFjOTM5In0sImlhdCI6MTY2NTU1NTc2OH0.64VNS70ZC160eSmQnvVhVddSoN3Scyr3l69oI3TVcxk'
       }
     });
-    console.log(response.json());
-    // response.map((eachNote) => {
-    //   setnote(note.concat(eachNote))
-    // })
+    const allFetchedNotes = await response.json()
+    setnote(allFetchedNotes)
+    // console.log(allFetchedNotes);
 
   }
 
-  const host = 'http://localhost:5000'
-  const notes = [
-    {
-      "_id": "63466030afbabce61752ad7fc",
-      "user": "6344eac5b01184567d81c939",
-      "title": "Hell yeah",
-      "description": "this is new description",
-      "tags": "work",
-      "date": "1665557258907",
-      "__v": 0
-    }
-  ]
+  const notes = []
 
 
   const [note, setnote] = useState(notes)
@@ -55,8 +44,14 @@ const NoteState = (props) => {
     setnote(note.concat(noteNEW))
   }
   // DELETE A NOTE
-  const deleteNote = (id) => {
-    console.log('delete run' + id);
+  const deleteNote = async(id) => {
+    const response = await fetch(`${host}/api/notes/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'authToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0NGVhYzViMDExODQ1NjdkODFjOTM5In0sImlhdCI6MTY2NTU1NTc2OH0.64VNS70ZC160eSmQnvVhVddSoN3Scyr3l69oI3TVcxk'
+      }
+    });
     const newNote = note.filter((note) => { return note._id !== id })
     setnote(newNote)
   }

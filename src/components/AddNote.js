@@ -25,6 +25,10 @@ export default function AddNote() {
                     <label htmlFor="description" className="form-label">Story</label>
                     <textarea className="form-control" id="description" name='description' rows="3" placeholder='It was a starting of spring...' onChange={onChange}></textarea>
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="tags" className="form-label">Tag</label>
+                    <textarea className="form-control" id="tags" name='tags' rows="1" placeholder='Work' onChange={onChange}></textarea>
+                </div>
                 <button type="button" className="form-control btn btn-primary" onClick={submitNote}>Create</button>
             </form>
         </>

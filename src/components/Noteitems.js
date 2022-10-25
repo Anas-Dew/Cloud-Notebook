@@ -5,7 +5,7 @@ export default function Noteitems(props) {
 
     const context = useContext(noteContext)
     const { deleteNote } = context
-    const { note } = props
+    const { note, updateNote } = props
     return (
         <>
             <div className='col-md-3' style={{display: "flex", justifyContent: "center"}}>
@@ -16,7 +16,7 @@ export default function Noteitems(props) {
                         <p className="card-text">{note.description}</p>
                         <div style={{display: "flex"}}>
                             <i className="text-danger fa-sharp fa-solid fa-trash" onClick={() => {deleteNote(note._id)}}></i>
-                            <i className="mx-2 fa-sharp fa-solid fa-pen-to-square"></i>
+                            <i className="mx-2 fa-sharp fa-solid fa-pen-to-square" onClick={() => {updateNote(note)}}></i>
                         </div>
                     </div>
                 </div>
