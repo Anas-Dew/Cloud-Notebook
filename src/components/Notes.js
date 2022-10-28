@@ -29,7 +29,7 @@ export default function Notes() {
             "tags": enote.etags,
             "date": "1665557259617",
             "__v": 0
-          }
+        }
         // setnote(note.concat(noteNEW))
         const newArr = note.map(u => u._id !== noteNEW._id ? u : noteNEW);
         setnote(newArr)
@@ -49,10 +49,10 @@ export default function Notes() {
         <>
             <h2 className='my-3 mx-1'>Notes</h2>
             <div className='row'>
+                {note.length === 0 && <NoNotes />}
                 {note.map((note) => {
                     return <Noteitems key={note._id} note={note} updateNote={updateNoteUi} />
                 })}
-                {/* <NoNotes/> */}
             </div>
             <button type="button" ref={ref} className="d-none btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal

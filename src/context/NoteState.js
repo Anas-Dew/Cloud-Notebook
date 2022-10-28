@@ -23,16 +23,7 @@ const NoteState = (props) => {
   const [note, setnote] = useState(notes)
   // ADD A NOTE
   const addNote = async(title, description, tags) => {
-    console.log('adding a note');
-    const noteNEW = {
-      "_id": "0bfce61752ad07fe",
-      "user": "6344eac5b01184567d81c939",
-      "title": title,
-      "description": description,
-      "tags": tags,
-      "date": "1665557259617",
-      "__v": 0
-    }
+  
     const response = await fetch(`${host}/api/notes/add-note`, {
       method: 'POST',
       headers: {
@@ -41,6 +32,8 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({title, description, tags})
     });
+
+    const noteNEW = await response.json();
     setnote(note.concat(noteNEW))
   }
   // DELETE A NOTE

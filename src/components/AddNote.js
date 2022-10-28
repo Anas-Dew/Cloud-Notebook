@@ -2,12 +2,15 @@ import React, {useContext, useState} from 'react'
 import noteContext from '../context/noteContext'
 export default function AddNote() {
     const notes = useContext(noteContext)
-    const {addNote } = notes
+    const {addNote} = notes
 
     const [note, setnote] = useState({title: "", description:"", tags: "default"})
     const submitNote = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tags)
+        document.getElementById('title').value = ''
+        document.getElementById('description').value = ''
+        document.getElementById('tags').value = ''
     }
 
     const onChange = (e) => {
@@ -27,9 +30,9 @@ export default function AddNote() {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tags" className="form-label">Tag</label>
-                    <textarea className="form-control" id="tags" name='tags' rows="1" placeholder='Work' onChange={onChange}></textarea>
+                    <textarea className="form-control" id="tags" name='tags' rows="1" placeholder='Eg. Work, Personal, Class etc.' onChange={onChange}></textarea>
                 </div>
-                <button type="button" className="form-control btn btn-primary" onClick={submitNote}>Create</button>
+                <button disabled={note.title.length < 1 || note.description.length < 1} type="button" className="form-control btn btn-primary" onClick={submitNote}>Create</button>
             </form>
         </>
     )
