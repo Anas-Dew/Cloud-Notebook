@@ -10,26 +10,41 @@ export default function Notes() {
     useEffect(() => {
         fetchAllNotes();
     }, [])
-    
-    const [enote, setenote] = useState({eid: null, etitle: '', edescription: '', etags: ''})
+
+    const [enote, setenote] = useState({ eid: null, etitle: '', edescription: '', etags: '' })
 
     const updateNoteUi = (currentNote) => {
         ref.current.click()
-        setenote({eid: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etags: currentNote.tags})
+        setenote({ eid: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etags: currentNote.tags })
     }
 
     const submitNote = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         updateNote(enote.eid, enote.etitle, enote.edescription, enote.etags)
+        let noteNEW = {
+            "_id": enote.eid,
+            "user": "6344eac5b01184567d81c939",
+            "title": enote.etitle,
+            "description": enote.edescription,
+            "tags": enote.etags,
+            "date": "1665557259617",
+            "__v": 0
+          }
+        // setnote(note.concat(noteNEW))
+        const newArr = note.map(u => u._id !== noteNEW._id ? u : noteNEW);
+        setnote(newArr)
+        // console.log(newArr);
+
         document.getElementById('submitButton').innerText = 'Saved!'
-        
-        // setnote(enote)
+        refClose.current.click()
     }
 
     const onChange = (e) => {
-        setenote({...enote, [e.target.name] : e.target.value})
+        setenote({ ...enote, [e.target.name]: e.target.value })
+        document.getElementById('submitButton').innerText = 'Save changes'
     }
-    const ref = useRef(null)
+    const ref = useRef(null);
+    const refClose = useRef(null);
     return (
         <>
             <h2 className='my-3 mx-1'>Notes</h2>
@@ -54,7 +69,7 @@ export default function Notes() {
                             <form className='my-3'>
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
-                                    <input className="form-control" id="etitle" name='etitle' placeholder="Write a title..." value={enote.etitle} onChange={onChange}/>
+                                    <input className="form-control" id="etitle" name='etitle' placeholder="Write a title..." value={enote.etitle} onChange={onChange} />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label">Story</label>
@@ -68,7 +83,7 @@ export default function Notes() {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn bg-danger btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" ref={refClose} className="btn bg-danger btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" className="btn bg-primary btn-primary" id='submitButton' onClick={submitNote}>Save changes</button>
                         </div>
                     </div>
