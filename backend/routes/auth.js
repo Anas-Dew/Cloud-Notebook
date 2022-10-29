@@ -13,7 +13,7 @@ router.post('/create-user', [
   body('password', 'Password must be atleast 7 characters long!').isLength({ min: 7 })
 ], async (req, res) => {
   let user = await User.findOne({ email: req.body.email })
-  
+
   if (user) {
     return res.status(400).json({ error: "Email already exists!" })
   }
@@ -23,7 +23,7 @@ router.post('/create-user', [
   }
 
   const salt = await bcrypt.genSalt(10);
-  const hashPass =  await bcrypt.hash(req.body.password, salt)
+  const hashPass = await bcrypt.hash(req.body.password, salt)
 
   user = await User.create({
     name: req.body.name,
@@ -35,13 +35,13 @@ router.post('/create-user', [
   });
 
   const data = {
-    user : {
-      id : user.id
+    user: {
+      id: user.id
     }
   }
-  
+
   const authToken = jwt.sign(data, 'lewpewmew');
-  return res.status(200).json({authToken})
+  return res.status(200).json({ authToken })
 })
 
 // ROUTE : 2 -> USER LOGIN 
@@ -54,34 +54,33 @@ router.post('/login-user', [
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
-  const {email, password} = req.body;
+  const { email, password } = req.body;
   try {
-    let user = await User.findOne({email});
-    if(!user){
-      return res.status(400).json({error: "Email or password is incorrect!"})
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ success: false, error: "Email or password is incorrect!" })
     }
     let passwordCompare = await bcrypt.compare(password, user.password)
 
-    if(!passwordCompare){
-      return res.status(400).json({error: "Email or password is incorrect!"})
-      
+    if (!passwordCompare) {
+      return res.status(400).json({ success: false, error: "Email or password is incorrect!" })
+
     }
     const data = {
-      user : {
-        id : user.id
+      user: {
+        id: user.id
       }
     }
-  
+
     const authToken = jwt.sign(data, 'lewpewmew');
-    return res.status(200).json({authToken})
+    return res.status(200).json({ success: true, authToken: authToken })
   } catch (error) {
-    return res.status(500).json({error: "Internal Server Error"})
+    return res.status(500).json({ success: false, error: "Internal Server Error" })
   }
 })
 
 // ROUTE : 3 -> FETCH USER DETAILS 
-router.post('/get-user', fetchuser, async(req, res) => {
+router.post('/get-user', fetchuser, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.send(user);
