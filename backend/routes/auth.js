@@ -10,7 +10,7 @@ router.post('/create-user', [
   // get these values from request body
   body('name', 'Input your name').isLength({ min: 1 }),
   body('email', 'Email is invalid!').isEmail(),
-  body('password', 'Password must be atleast 7 characters long!').isLength({ min: 7 })
+  body('password', 'Password must be atleast 5 characters long!').isLength({ min: 5 })
 ], async (req, res) => {
   let user = await User.findOne({ email: req.body.email })
 
@@ -29,10 +29,11 @@ router.post('/create-user', [
     name: req.body.name,
     email: req.body.email,
     password: hashPass,
-  }).then(user => res.json('user add success..!')).catch(error => {
-    console.error(error.message);
-    res.send('Email already exists!')
   });
+  // .then(user => res.json('user add success..!')).catch(error => {
+  //   console.error(error.message);
+  //   res.send('Email already exists!')
+  // });
 
   const data = {
     user: {
