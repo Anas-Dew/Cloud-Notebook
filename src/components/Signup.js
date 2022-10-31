@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-
-export default function Signup() {
+import { useNavigate } from 'react-router-dom'
+export default function Signup(props) {
   const [log, setlog] = useState({ password: "" })
   const onChange = (e) => {
     setlog({ ...log, [e.target.name]: e.target.value })
   }
 
   const host = 'http://localhost:5000'
+  const navigate = useNavigate();
 
   const signupUser = async (e) => {
     e.preventDefault()
@@ -22,11 +23,11 @@ export default function Signup() {
     // REDIRECT USER
     if (respond.authToken) {
       localStorage.setItem('token', respond.authToken)
-      // history('/')
-      window.location.href = "/";
+      props.showAlert('Fantastic!', 'Account Created!', 'success')
+      navigate('/')
 
     } else {
-      alert('You Suck!')
+      props.showAlert('Woah!', 'Something went wrong!', 'danger')
     }
 
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import {Navigate} from 'react-router-dom'
-export default function Login() {
+import { useNavigate } from 'react-router-dom'
+export default function Login(props) {
     const host = 'http://localhost:5000'
-    // let history = Navigate();
+    const navigate = useNavigate();
     const loginUser = async(e) => {
         e.preventDefault()
         const response = await fetch(`${host}/api/login-user`, {
@@ -18,11 +18,12 @@ export default function Login() {
         // REDIRECT USER
         if (respond.authToken) {
             localStorage.setItem('token', respond.authToken)
-            // history('/')
-            window.location.href = "/";
+    
+            props.showAlert('Cool!', 'Login Sucesss!', 'success')
+            navigate('/')
             
         } else {
-            alert('You Suck!')
+            props.showAlert('Woah!', 'Something went wrong!', 'danger')
         }
     }
 

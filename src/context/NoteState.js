@@ -14,6 +14,7 @@ const NoteState = (props) => {
     const allFetchedNotes = await response.json()
     setnote(allFetchedNotes)
     // console.log(allFetchedNotes);
+    // props.showAlert('Hi!', 'Welcome back!', 'success')
 
   }
 

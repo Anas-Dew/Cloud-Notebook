@@ -3,7 +3,7 @@ import noteContext from '../context/noteContext'
 // import EditModal from './EditModal'
 import NoNotes from './NoNotes'
 import Noteitems from './Noteitems'
-export default function Notes() {
+export default function Notes(props) {
 
     const notes = useContext(noteContext)
     const { note, setnote, fetchAllNotes, updateNote } = notes
