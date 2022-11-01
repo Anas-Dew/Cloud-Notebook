@@ -3,12 +3,17 @@ import noteContext from '../context/noteContext'
 // import EditModal from './EditModal'
 import NoNotes from './NoNotes'
 import Noteitems from './Noteitems'
+import { useNavigate } from 'react-router-dom'
 export default function Notes(props) {
-
+    const navigate = useNavigate();
     const notes = useContext(noteContext)
     const { note, setnote, fetchAllNotes, updateNote } = notes
     useEffect(() => {
-        fetchAllNotes();
+        if (localStorage.getItem('token')) {
+            fetchAllNotes();
+        } else {
+            navigate('/login')
+        }
     }, [])
 
     const [enote, setenote] = useState({ eid: null, etitle: '', edescription: '', etags: '' })
