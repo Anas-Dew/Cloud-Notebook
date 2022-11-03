@@ -27,7 +27,7 @@ function App() {
     <>
       <NoteState showAlert={showAlert}>
         <Router>
-          <Navbar title='INoteBook' />
+          <Navbar title='Notastic' />
           {/* <Alert bold='h' message='s' type='success'/> */}
           <Alert alert={alert}/>
           <div className='container'>

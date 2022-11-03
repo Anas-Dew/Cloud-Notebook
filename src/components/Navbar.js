@@ -12,7 +12,7 @@ export default function Navbar(props) {
     
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+            <nav className="navbar navbar-expand-lg bg-primary navbar-dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand text-light" to="/">{props.title}</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,9 +42,9 @@ export default function Navbar(props) {
                             </li>
                         </ul>
                         {!localStorage.getItem('token') ? <form className="d-flex justify-content-end">
-                            <Link className="d-flex align-items-center text-decoration-none mx-2" to="/login" role="button">Login</Link>
-                            <Link className="btn btn-primary mx-2" to="/signup" role="button">Signup</Link>
-                        </form> : <button onClick={logout} className='btn btn-danger text-black'>Logout</button>}
+                            {/* <Link className="d-flex text-white align-items-center text-decoration-none mx-2" to="/login" role="button">Login</Link> */}
+                            <Link style={{backgroundColor: "#212121"}} className="btn text-white mx-2" to="/signup" role="button">Signup</Link>
+                        </form> : <button onClick={logout} style={{backgroundColor: "#212121"}} className='btn text-white'>Logout</button>}
                     </div>
                 </div>
             </nav>

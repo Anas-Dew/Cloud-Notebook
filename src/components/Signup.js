@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 export default function Signup(props) {
   const [log, setlog] = useState({ password: "" })
   const onChange = (e) => {
@@ -37,21 +37,24 @@ export default function Signup(props) {
       <form onSubmit={signupUser}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" name='name' aria-describedby="emailHelp" />
+          <input placeholder='Harry' type="text" className="form-control" id="name" name='name' aria-describedby="emailHelp" />
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email</label>
-          <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" />
+          <input placeholder='harry@example.com' type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">Password</label>
-          <input type="password" onChange={onChange} className="form-control" name='password' minLength={5} id="password" />
+          <input placeholder='Create a memorable password' type="password" onChange={onChange} className="form-control" name='password' minLength={5} id="password" />
         </div>
         {/* <div className="mb-3 form-check">
           <input type="checkbox" className="form-check-input" id="keeploggedin" />
           <label className="form-check-label" htmlFor="keeploggedin" name='keeploggedin'>Keep me logged in.</label>
         </div> */}
-        <button disabled={log.password.length <= 5} type="submit" className="btn btn-primary" >Create Account</button>
+        <div className='d-flex flex-direction-column'>
+          <button disabled={log.password.length <= 5} type="submit" className="btn btn-primary" >Create Account</button>
+          <Link style={{ color: "#8e00f1" }} className=" d-flex align-items-center text-decoration-none mx-3" to="/login" role="button">Use an existing account</Link>
+        </div>
       </form>
     </>
   )

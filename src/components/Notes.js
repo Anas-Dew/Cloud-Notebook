@@ -50,13 +50,40 @@ export default function Notes(props) {
     }
     const ref = useRef(null);
     const refClose = useRef(null);
+
+    function emotion_filter(thatTag){
+        var stylies_global = ['black', 'white']
+        const noteCard = document.getElementById('note-card')
+        // console.log(thatTag);
+        const emotion_filters = new Map()
+        // First item in ARR is text color and second one is BackgroundColor of Card.
+        emotion_filters.set('class', ['black', '#efef00'])
+        emotion_filters.set('love', ['white', '#ac0202'])
+        emotion_filters.set('work', ['white', '#0000a7'])
+
+        const emotion_filters_key = ['love', 'class', 'work']
+
+        emotion_filters_key.map((filter) => {
+            if (filter == thatTag.toLowerCase()){
+                let stylies = emotion_filters.get(filter)
+                // noteCard.style.color = stylies[0]
+                // noteCard.style.backgroundColor = stylies[1];
+                // console.log(stylies);
+                stylies_global = stylies
+            }
+            
+        })
+        return stylies_global
+    }
     return (
         <>
             <h2 className='my-3 mx-1'>Notes</h2>
             <div className='row'>
                 {note.length === 0 && <NoNotes />}
                 {note.map((note) => {
-                    return <Noteitems key={note._id} note={note} updateNote={updateNoteUi} />
+                    const note_style = emotion_filter(note.tags)
+                    {/* const note_style= ['blue', 'black'] */}
+                    return <Noteitems key={note._id} note={note} note_style={note_style} updateNote={updateNoteUi} />
                 })}
             </div>
             <button type="button" ref={ref} className="d-none btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
