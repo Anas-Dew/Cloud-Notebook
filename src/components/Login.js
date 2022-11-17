@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 export default function Login(props) {
-    const host = 'https://cloud-notebook-six.vercel.app/'
+    const host = 'https://cloud-notebook-six.vercel.app'
     const navigate = useNavigate();
     const loginUser = async (e) => {
         e.preventDefault()
@@ -9,6 +9,7 @@ export default function Login(props) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://notastic.web.app/'
             },
             body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value })
         });

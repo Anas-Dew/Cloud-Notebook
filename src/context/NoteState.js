@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import NoteContext from './noteContext'
 const NoteState = (props) => {
-  const host = 'https://cloud-notebook-six.vercel.app/'
+  const host = 'https://cloud-notebook-six.vercel.app'
   
   const fetchAllNotes = async() => {
     const response = await fetch(`${host}/api/notes/fetch-all-notes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'authToken': localStorage.getItem('token')
+        'authToken': localStorage.getItem('token'),
+        'Access-Control-Allow-Origin': 'https://notastic.web.app/'
       }
     });
     const allFetchedNotes = await response.json()
