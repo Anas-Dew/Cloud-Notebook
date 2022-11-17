@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 export default function Login(props) {
-    const host = 'http://localhost:5000'
+    const host = 'https://cloud-notebook-1563124e4-anasdew.vercel.app/'
     const navigate = useNavigate();
     const loginUser = async (e) => {
         e.preventDefault()
