@@ -4,15 +4,6 @@ const connectToMongo = require('./db')
 connectToMongo();
 
 const app = express()
-cors: {
-        origin: "notastic.web.app";
-    }
-
-app.all('*', function(req, res, next) {
-            res.header("Access-Control-Allow-Origin", cors.origin);
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            next();
-        });
 
 app.use(express.json())
 const port = 5000
