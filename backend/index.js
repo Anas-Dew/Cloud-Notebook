@@ -16,6 +16,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0',() => {
   console.log(`INoteBook's Server listening on port ${port}`)
 })
