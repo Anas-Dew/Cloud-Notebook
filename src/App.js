@@ -31,7 +31,7 @@ function App() {
           <Navbar title='Notastic' />
           {/* <Alert bold='h' message='s' type='success'/> */}
           <Alert alert={alert}/>
-          <div className='container'>
+          <div className='container d-flex flex-column'>
             <Routes>
               <Route exact path="/" element={<Home showAlert={showAlert}/>} />
               <Route exact path="/account" element={<Account />} />
