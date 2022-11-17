@@ -4,18 +4,16 @@ const connectToMongo = require('./db')
 connectToMongo();
 
 const app = express()
-const allowedOrigins = ['notastic.web.app'];
-app.use(cors({
-  origin: function(origin, callback){
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+cors: {
+        origin: "www.one.com";
     }
-    return callback(null, true);
-  }
 
-}));
+app.all('*', function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", cors.origin);
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
+
 app.use(express.json())
 const port = 5000
 
