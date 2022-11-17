@@ -8,10 +8,10 @@ export default function Login(props) {
         const response = await fetch(`${host}/api/login-user`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://notastic.web.app/'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value })
+            body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value }),
+            mode: 'cors'
         });
         const respond = await response.json()
         console.log(respond);

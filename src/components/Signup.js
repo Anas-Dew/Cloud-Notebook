@@ -15,9 +15,9 @@ export default function Signup(props) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://notastic.web.app/'
       },
-      body: JSON.stringify({ name: document.getElementById('name').value, email: document.getElementById('email').value, password: document.getElementById('password').value })
+      body: JSON.stringify({ name: document.getElementById('name').value, email: document.getElementById('email').value, password: document.getElementById('password').value }),
+      mode: 'cors'
     });
     const respond = await response.json()
 

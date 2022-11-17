@@ -9,8 +9,8 @@ const NoteState = (props) => {
       headers: {
         'Content-Type': 'application/json',
         'authToken': localStorage.getItem('token'),
-        'Access-Control-Allow-Origin': 'https://notastic.web.app/'
-      }
+      },
+      mode: 'cors'
     });
     const allFetchedNotes = await response.json()
     setnote(allFetchedNotes)
