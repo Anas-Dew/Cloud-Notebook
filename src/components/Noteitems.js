@@ -19,12 +19,11 @@ export default function Noteitems(props) {
         const emotion_filters_key = ['love', 'class', 'work']
 
         emotion_filters_key.map((filter) => {
-            if (filter == thatTag.toLowerCase()){
+            if (filter === thatTag.toLowerCase()){
                 const stylies = emotion_filters.get(filter)
-                // noteCard.style.color = stylies[0]
-                // noteCard.style.backgroundColor = stylies[1];
                 return stylies
             }
+            return
         })
     }
 
