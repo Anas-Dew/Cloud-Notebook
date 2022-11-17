@@ -5,7 +5,7 @@ connectToMongo();
 
 const app = express()
 cors: {
-        origin: "www.one.com";
+        origin: "notastic.web.app";
     }
 
 app.all('*', function(req, res, next) {
