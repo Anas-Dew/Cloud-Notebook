@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 const fetchuser = (req, res, next) =>{
     const token = req.header('authToken');
     // Website you wish to allow to connect
-    req.setHeader('Access-Control-Allow-Origin', 'https://notastic.web.app/');
+    res.setHeader('Access-Control-Allow-Origin', 'https://notastic.web.app/');
     // Request methods you wish to allow
-    req.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     if(!token){
         res.status(401).send({error: "Invalid token"})
     }
