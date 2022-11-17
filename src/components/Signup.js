@@ -6,7 +6,7 @@ export default function Signup(props) {
     setlog({ ...log, [e.target.name]: e.target.value })
   }
 
-  const host = 'https://cloud-notebook-1563124e4-anasdew.vercel.app/'
+  const host = 'https://cloud-notebook-six.vercel.app/'
   const navigate = useNavigate();
 
   const signupUser = async (e) => {
