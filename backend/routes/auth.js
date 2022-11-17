@@ -74,7 +74,6 @@ router.post('/login-user', [
     }
 
     const authToken = jwt.sign(data, 'lewpewmew');
-    res.set('Access-Control-Allow-Origin', '*');
     return res.status(200).json({ success: true, authToken: authToken })
   } catch (error) {
     return res.status(500).json({ success: false, error: "Internal Server Error" })
