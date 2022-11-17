@@ -5,12 +5,12 @@ connectToMongo();
 
 const app = express()
 app.use(cors({
-  origin: 'https://notastic.web.app/'
+  origin: ['https://notastic.web.app/', 'https://cloud-notebook-six.vercel.app/']
 }))
 app.use(express.json())
 const port = 5000
 
-// Available Routes
+// Available Routes 
 app.use('/api/', require('./routes/auth.js'))
 app.use('/api/notes', require('./routes/notes.js'))
 
