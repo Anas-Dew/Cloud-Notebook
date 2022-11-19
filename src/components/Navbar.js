@@ -14,7 +14,7 @@ export default function Navbar(props) {
         <>
             <nav className="navbar navbar-expand-lg bg-primary navbar-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand text-light" to="/">{props.title}</Link>
+                    <Link style={{fontFamily: 'fantasy'}} className="navbar-brand text-light" to="/">{props.title}</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -29,6 +29,9 @@ export default function Navbar(props) {
 
                             <li className="nav-item">
                                 <Link className="nav-link disabled">Premium Features</Link>
+                            </li>
+                            <li className="nav-item">
+                                {/* <Link onClick={window.location.replace('https://www.getrevue.co/profile/ananasraza')} className="nav-link">Subscribe to tech newsletter for free!</Link> */}
                             </li>
                         </ul>
                         {!localStorage.getItem('token') ? <form className="d-flex justify-content-end">

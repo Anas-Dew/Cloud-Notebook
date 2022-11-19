@@ -32,7 +32,7 @@ export default function AddNote() {
                     <label htmlFor="tags" className="form-label">Tag</label>
                     <textarea className="form-control" id="tags" name='tags' rows="1" placeholder='Eg. Work, Personal, Class etc.' onChange={onChange}></textarea>
                 </div>
-                <button disabled={note.title.length < 1 || note.description.length < 1} type="button" className="form-control btn btn-primary" onClick={submitNote}>Create</button>
+                <button disabled={note.title.length < 1 || note.description.length < 1} type="button" className="form-control btn btn-primary" data-bs-dismiss="modal" onClick={submitNote}>Create</button>
             </form>
         </>
     )
